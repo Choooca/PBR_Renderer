@@ -1,8 +1,17 @@
-# Build directories
-build/
-out/
+# Ignore everything in build/
+build/*
+!build/.gitkeep
 
-# CMake generated files
+# Ignore out/ if used
+out/*
+!out/.gitkeep
+
+# Libs Output  
+# Ignore generated files in libs/
+libs/*
+!libs/.gitkeep
+
+# CMake
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
@@ -10,23 +19,20 @@ install_manifest.txt
 CTestTestfile.cmake
 _deps/
 
-# Generated libraries and executables
+# Compiled Files
 *.exe
 *.dll
 *.so
 *.dylib
 *.a
 *.lib
+*.o
+*.obj
 *.exp
 *.pdb
 *.ilk
 
-# Output directories (but keep the folder structure)
-libs/*.dll
-libs/*.lib
-libs/*.a
-
-# Visual Studio files
+# Visual Studio
 .vs/
 *.vcxproj
 *.vcxproj.filters
@@ -34,40 +40,30 @@ libs/*.a
 *.sln
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
 
 # Visual Studio Code
 .vscode/
-*.code-workspace
 
-# JetBrains IDEs (CLion, etc.)
+# CLion
 .idea/
 cmake-build-*/
 
-# OS files
+# OS Files
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Backup files
+# Backup Files
 *~
 *.swp
-*.swo
 *.bak
 *.tmp
 
-# Compiled Object files
-*.o
-*.obj
 
-# FetchContent downloaded dependencies (automatically re-downloaded)
-_deps/
+# Keep Structure
+# Keep all .gitkeep files
+!**/.gitkeep
 
-# Don't ignore the external folder structure
-!external/
-!external/glad/
-
-# But keep the GLAD files you manually added
-!external/glad/include/
-!external/glad/src/
+# Keep GLAD files
+!external/glad/include/**
+!external/glad/src/**
