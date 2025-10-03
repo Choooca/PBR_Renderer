@@ -67,3 +67,6 @@ desktop.ini
 # Keep GLAD files
 !external/glad/include/**
 !external/glad/src/**
+
+# Keep stb file
+!external/stb/**

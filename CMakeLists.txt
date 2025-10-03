@@ -41,7 +41,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glm SDL3)
 
 add_library(glad STATIC ${CMAKE_SOURCE_DIR}/external/glad/src/glad.c)
-
 target_include_directories(glad PUBLIC ${CMAKE_SOURCE_DIR}/external/glad/include)
+
+add_library(stb INTERFACE)
+target_include_directories(stb INTERFACE ${CMAKE_SOURCE_DIR}/external/stb)
 
 add_subdirectory(src)
