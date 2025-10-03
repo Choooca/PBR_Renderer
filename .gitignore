@@ -1,0 +1,73 @@
+# Build directories
+build/
+out/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_deps/
+
+# Generated libraries and executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.exp
+*.pdb
+*.ilk
+
+# Output directories (but keep the folder structure)
+libs/*.dll
+libs/*.lib
+libs/*.a
+
+# Visual Studio files
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs (CLion, etc.)
+.idea/
+cmake-build-*/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Compiled Object files
+*.o
+*.obj
+
+# FetchContent downloaded dependencies (automatically re-downloaded)
+_deps/
+
+# Don't ignore the external folder structure
+!external/
+!external/glad/
+
+# But keep the GLAD files you manually added
+!external/glad/include/
+!external/glad/src/
