@@ -2,7 +2,7 @@
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>
 
-float vertices[] = {
+static float vertices[] = {
 		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
 		0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
 		0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
@@ -44,10 +44,6 @@ float vertices[] = {
 		0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
 		-0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
 		-0.5f, 0.5f, -0.5f, 0.0f, 1.0f };
-
-unsigned int indices[] = {
-	0, 1, 3,
-	1, 2, 3 };
 
 CubeRenderer::CubeRenderer(){
 	shader = Shader::GetShader("default.vert", "default.frag");

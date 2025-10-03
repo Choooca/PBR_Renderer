@@ -7,8 +7,7 @@ add_subdirectory(behaviour_objects)
 list(APPEND PROJECT_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} "renderer/plane_renderer.cpp")
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
 							PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
