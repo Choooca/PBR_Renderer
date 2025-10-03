@@ -8,7 +8,7 @@ public :
 	glm::mat4 GetViewMatrix() const;
 	void Update(const InputHandler& input_manager);
 
-	float speed = 100.0f;
+	float speed = 5.0f;
 
 private :
 	glm::vec3 pos = glm::vec3(0, 0, 0.0f);;

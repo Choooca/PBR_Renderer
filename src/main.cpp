@@ -3,20 +3,23 @@
 #include "renderer/shader.h"
 #include "input_handler/input_handler.h"
 #include "behaviour_objects/camera.h"
+#include "renderer/cube_renderer.h"
 
 int main(int argc, char *argv[])
 {
 	RenderInit();
 	
 	InputHandler* input_handler = new InputHandler(window);
-	Shader* shader = Shader::GetShader("default.vert", "default.frag");
 	Camera cam;
+	CubeRenderer cube;
 
 	while (!input_handler->quit) {
 		input_handler->Update();
 		cam.Update(*input_handler);
 
 		RenderBegin();
+
+		cube.Render(&cam);
 
 		RenderEnd();
 	}
