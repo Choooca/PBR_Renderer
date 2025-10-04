@@ -118,8 +118,8 @@ Shader* Shader::GetShader(std::string vertexPath, std::string fragmentPath) {
 }
 
 void Shader::DestroyAllShader() {
-	for (const auto& [name, shader] : Shader::shader_loaded) {
-		delete shader;
+	for (const auto& [name, m_shader] : Shader::shader_loaded) {
+		delete m_shader;
 	}
 
 	shader_loaded.clear();

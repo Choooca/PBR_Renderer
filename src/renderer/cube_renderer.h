@@ -5,6 +5,9 @@
 
 class CubeRenderer : public ShapeRenderer {
 public:
-	CubeRenderer();
-	void Render(Camera* cam) override;
+	CubeRenderer(const glm::vec3 & position = glm::vec3(0.0f));
+	~CubeRenderer();
+	void Render(const std::unique_ptr<Camera>& cam) override;
+protected:
+	void InitVariables() override;
 };

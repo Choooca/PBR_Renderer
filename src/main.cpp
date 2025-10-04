@@ -10,24 +10,23 @@ int main(int argc, char *argv[])
 {
 	RenderInit();
 	
-	InputHandler* input_handler = new InputHandler(window);
-	Camera cam;
-	CubeRenderer cube;
-	PlaneRenderer plane;
+	std::unique_ptr<InputHandler> input_handler = std::make_unique<InputHandler>(window);
+	std::unique_ptr<Camera> cam = std::make_unique<Camera>();
+	std::unique_ptr<ShapeRenderer> cube = ShapeRenderer::Create(SHAPES::CUBE);
+	std::unique_ptr<ShapeRenderer> plane = ShapeRenderer::Create(SHAPES::PLANE);
 
 	while (!input_handler->quit) {
 		input_handler->Update();
-		cam.Update(*input_handler);
+		cam->Update(*input_handler);
 
 		RenderBegin();
 
-		cube.Render(&cam);
-		plane.Render(&cam);
+		cube->Render(cam);
+		plane->Render(cam);
 
 		RenderEnd();
 	}
 
-	delete input_handler;
 	Shader::DestroyAllShader();
 	DestroyRender();
 

@@ -12,19 +12,19 @@ static unsigned int indices[] = {
 	1, 2, 3  // second triangle
 };
 
-PlaneRenderer::PlaneRenderer() {
-	shader = Shader::GetShader("default.vert", "default.frag");
+void PlaneRenderer::InitVariables() {
+	m_shader = Shader::GetShader("default.vert", "default.frag");
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
+	glGenBuffers(1, &m_EBO);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
@@ -37,17 +37,25 @@ PlaneRenderer::PlaneRenderer() {
 	glBindVertexArray(0);
 }
 
-void PlaneRenderer::Render(Camera* cam) {
-	shader->use();
+PlaneRenderer::PlaneRenderer(const glm::vec3 &m_position) : ShapeRenderer(m_position) {}
+
+PlaneRenderer::~PlaneRenderer() {
+	glDeleteVertexArrays(1, &m_VAO);
+	glDeleteBuffers(1, &m_VBO);
+	glDeleteBuffers(1, &m_EBO);
+}
+
+void PlaneRenderer::Render(const std::unique_ptr<Camera>& cam) {
+	m_shader->use();
 
 	glm::mat4 projection_matrix = glm::mat4(1.0f);
 	projection_matrix = glm::perspective(glm::radians(90.0f), 800.0f / 600.0f, .1f, 100.0f);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	shader->setMat4("model", glm::mat4(1.0f));
-	shader->setMat4("projection", projection_matrix);
-	shader->setMat4("view", cam->GetViewMatrix());
+	glBindVertexArray(m_VAO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+	m_shader->setMat4("model", glm::mat4(1.0f));
+	m_shader->setMat4("projection", projection_matrix);
+	m_shader->setMat4("view", cam->GetViewMatrix());
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
