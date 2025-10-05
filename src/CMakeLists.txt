@@ -12,7 +12,8 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} "renderer/plane_renderer.cpp")
 target_compile_definitions(${PROJECT_NAME} PRIVATE
 							PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
 							ASSETS_PATH="${CMAKE_SOURCE_DIR}/assets"
-							SHADERS_PATH="${CMAKE_SOURCE_DIR}/assets/shaders")
+							SHADERS_PATH="${CMAKE_SOURCE_DIR}/assets/shaders"
+							TEXTURES_PATH="${CMAKE_SOURCE_DIR}/assets/textures")
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src)
 

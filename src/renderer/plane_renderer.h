@@ -6,6 +6,7 @@ public:
 	PlaneRenderer(const glm::vec3 &m_position = glm::vec3(0.0f));
 	~PlaneRenderer();
 	void Render(const std::unique_ptr<Camera>& cam) override;
+	void InitVariables(std::string texture_path = "debug.png") override;
 protected:
-	void InitVariables() override;
+	void InitBuffers() override;
 };

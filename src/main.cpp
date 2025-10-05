@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	
 	std::unique_ptr<InputHandler> input_handler = std::make_unique<InputHandler>(window);
 	std::unique_ptr<Camera> cam = std::make_unique<Camera>();
-	std::unique_ptr<ShapeRenderer> cube = ShapeRenderer::Create(SHAPES::CUBE);
+	std::unique_ptr<ShapeRenderer> cube = ShapeRenderer::Create(SHAPES::CUBE, glm::vec3(2.0f), "wood.jpg");
 	std::unique_ptr<ShapeRenderer> plane = ShapeRenderer::Create(SHAPES::PLANE);
 
 	while (!input_handler->quit) {
