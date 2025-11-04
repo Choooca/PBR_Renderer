@@ -1,9 +1,9 @@
+add_subdirectory(shapes)
+
 set(RENDERER_SOURCES
-	${CMAKE_CURRENT_SOURCE_DIR}/render.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/window.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/shader.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/shape_renderer.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/cube_renderer.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/plane_renderer.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/texture.cpp
 	)
 
 list(APPEND PROJECT_SOURCES ${RENDERER_SOURCES})

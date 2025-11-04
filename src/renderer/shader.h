@@ -1,26 +1,19 @@
 #pragma once
 
-#include <glad/glad.h>
-
 #include <string>
-#include <fstream>
-#include <sstream>
-#include <iostream>
 #include <unordered_map>
+#include <memory>
 
-#include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
 class Shader
 {
+
 public:
-	static std::unordered_map<std::string, Shader*> shader_loaded;
 
-	static Shader* GetShader(std::string vertexPath, std::string fragmentPath);
-	static void DestroyAllShader();
+	Shader(const std::string &shader_name);
 
-	unsigned int ID;
+  ~Shader();
 
 	void use();
 
@@ -29,6 +22,21 @@ public:
 	void setFloat(const std::string &name, float value) const;
 	void setMat4(const std::string &name, glm::mat4 value) const;
 	void setColor(const std::string& name, glm::vec4 value) const;
+
 private:
-	Shader(std::string vertexPath, std::string fragmentPath);
+
+	unsigned int m_ID;
+};
+
+class ShaderManager{
+public:
+  
+  std::shared_ptr<Shader> GetShader(const std::string &shader_name);
+
+  ~ShaderManager();
+
+private:
+
+	std::unordered_map<std::string, std::shared_ptr<Shader>> shader_loaded;
+
 };

@@ -1,5 +1,4 @@
 #include "input_handler.h"
-#include <iostream>
 
 InputHandler::InputHandler(SDL_Window* window) {
 	current_time = SDL_GetTicks();

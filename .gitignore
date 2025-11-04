@@ -2,6 +2,8 @@
 build/*
 !build/.gitkeep
 
+.cache
+
 # Ignore out/ if used
 out/*
 !out/.gitkeep

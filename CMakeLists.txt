@@ -1,12 +1,28 @@
 cmake_minimum_required(VERSION 3.20)
 
+if(NOT DEFINED CMAKE_C_COMPILER)
+  set(CMAKE_C_COMPILER clang)
+endif()
+
+if(NOT DEFINED CMAKE_CXX_COMPILER)
+  set(CMAKE_CXX_COMPILER clang++)
+endif()
+
 project(
 	PBR_RENDERER
 	VERSION 1.0.0
-	LANGUAGES CXX C # SET CPP & C FOR GLAD
+	LANGUAGES CXX C 
 )
 
-# SET CPP STANDARD
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
+
+set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -pedantic")
+set(CMAKE_C_FLAGS_DEBUG "-g -Wall")
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -47,3 +63,4 @@ add_library(stb INTERFACE)
 target_include_directories(stb INTERFACE ${CMAKE_SOURCE_DIR}/external/stb)
 
 add_subdirectory(src)
+
