@@ -1,6 +1,7 @@
 #include "application.h"
 #include "behaviour_objects/camera.h"
 #include "glm/ext/vector_float3.hpp"
+#include <cmath>
 #include <input_handler/input_handler.h>
 #include <memory>
 #include <renderer/shapes/shape_renderer.h>
@@ -25,26 +26,35 @@ void Application::Run() {
 
   std::unique_ptr<ShapesFactory> shape_factory =
       std::make_unique<ShapesFactory>();
-  shape_factory->CreateShape(CUBE, m_context);
 
-  ShapeRenderer *plane = shape_factory->CreateShape(PLANE, m_context);
+  ShapeRenderer *cube = shape_factory->CreateShape(CUBE, m_context);
+  cube->m_color = {1.0f, 0.5f, 0.31f};
+  cube->m_scale = {20.0f, 1.5f, 20.0f};
 
-  plane->SetColor({1.0f, 1.0f, 0.0f});
-  plane->SetPosition({1.0f, 0.0f, 0.0f});
+  Light light = Light();
+  light.m_position = {2.0F, 3.0F, 1.0F};
+  light.m_color = {1.0f, 1.0f, 1.0f};
 
   ShapeRenderer *blank_cube = shape_factory->CreateShape(BLANK_CUBE, m_context);
+  blank_cube->m_position = light.m_position;
 
   std::unique_ptr<Camera> camera = std::make_unique<Camera>();
 
-  Light light = Light();
-  light.m_position = {7.0F, 7.0F, 7.0F};
-  blank_cube->SetPosition(light.m_position);
+  std::shared_ptr<Shader> default_shader =
+      m_context->GetShaderManager()->GetShader("default");
 
-  light.m_color = {.7f, .3f, 1.0f};
+  float count = 0;
 
   while (!m_context->GetInputHandler()->quit) {
     m_context->GetInputHandler()->Update();
+    
     camera->Update(m_context->GetInputHandler());
+
+    count += m_context->GetInputHandler()->delta_time;
+    blank_cube->m_position = light.m_position;
+
+    light.m_position.x = cos(count) * 10;
+    light.m_position.z = sin(count) * 10;
 
     m_context->GetWindow()->RenderBegin();
 

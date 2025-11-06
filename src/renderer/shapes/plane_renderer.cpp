@@ -65,6 +65,8 @@ void PlaneRenderer::Render(const Camera *cam, const Light *light) {
   m_shader->setMat4("view", cam->GetViewMatrix());
 
   m_shader->SetVec3("light_color", light->m_color);
+  m_shader->setFloat("ambient_strength", light->m_ambient_strength);
+
   m_shader->SetVec3("object_color", m_color);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);

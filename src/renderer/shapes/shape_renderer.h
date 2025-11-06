@@ -27,20 +27,17 @@ public:
                   TextureManager *texture_manager);
   void SetTexture(unsigned int texture);
 
-  void SetColor(const glm::vec3& color) {m_color = color;};
-
-  void SetPosition(const glm::vec3 &position) { m_position = position; };
-  glm::vec3 GetPosition() { return m_position; };
+  glm::vec3 m_color = {1.0f, 1.0f, 1.0f};
+  glm::vec3 m_position; 
+  glm::vec3 m_scale = {1.0f, 1.0f, 1.0f}; 
 
 protected:
   std::shared_ptr<Shader> m_shader;
   unsigned int m_texture;
-
-  glm::vec3 m_color = {1.0f, 1.0f, 1.0f};
-
+ 
   unsigned int m_VAO = 0;
   unsigned int m_VBO = 0;
   unsigned int m_EBO = 0;
+ 
 
-  glm::vec3 m_position; 
 };
