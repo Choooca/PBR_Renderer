@@ -83,13 +83,10 @@ void CubeRenderer::Render(const Camera *cam, const Light *light) {
   m_shader->setMat4("projection", projection_matrix);
   m_shader->setMat4("view", cam->GetViewMatrix());
 
-  glm::vec3 light_pos_view = glm::vec3(cam->GetViewMatrix() * glm::vec4(light->m_position, 1.0f));
-  m_shader->SetVec3("light_pos", light_pos_view);
-
-  m_shader->SetVec3("light_color", light->m_color);
-  m_shader->setFloat("ambient_strength", light->m_ambient_strength);
-
-  m_shader->SetVec3("object_color", m_color);
+  m_shader->SetVec3("material.ambient", {1.0f, 0.5f, 0.31f});
+  m_shader->SetVec3("material.diffuse", {1.0f, 0.5f, 0.31f});
+  m_shader->SetVec3("material.specular", {0.5f, 0.5f, 0.5f});
+  m_shader->SetFloat("material.shininess", 32.0f);
 
   glDrawArrays(GL_TRIANGLES, 0, 36);
 

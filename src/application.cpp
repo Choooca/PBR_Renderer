@@ -47,8 +47,14 @@ void Application::Run() {
 
   while (!m_context->GetInputHandler()->quit) {
     m_context->GetInputHandler()->Update();
-    
+
     camera->Update(m_context->GetInputHandler());
+
+    default_shader->use();
+    default_shader->SetVec3("light.ambient", {0.2f, 0.2f, 0.2f});
+    default_shader->SetVec3("light.diffuse", {0.5f, 0.5f, 0.5f});
+    default_shader->SetVec3("light.specular", {1.0f, 1.0f, 1.0f});
+    default_shader->SetVec3("light.position", (camera->GetViewMatrix() * glm::vec4(glm::vec3(light.m_position), 1.0f) ));
 
     count += m_context->GetInputHandler()->delta_time;
     blank_cube->m_position = light.m_position;
