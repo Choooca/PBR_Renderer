@@ -3,6 +3,7 @@ set(SHAPES_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/cube_renderer.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/plane_renderer.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/shapes_factory.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/blank_cube.cpp
 	)
 
 list(APPEND PROJECT_SOURCES ${SHAPES_SOURCES})

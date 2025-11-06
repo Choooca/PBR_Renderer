@@ -105,11 +105,11 @@ Window::Window(const char *title, int height, int width) : m_height(height), m_w
 
   SDL_Init(SDL_INIT_VIDEO);
 
-  m_window = SDL_CreateWindow(title, m_height, m_width, SDL_WINDOW_OPENGL);
-
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+  m_window = SDL_CreateWindow(title, m_height, m_width, SDL_WINDOW_OPENGL);
 
   if (!m_window) {
     SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Could not create window : %s\n",

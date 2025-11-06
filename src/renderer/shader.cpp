@@ -111,6 +111,12 @@ void Shader::setColor(const std::string& name, glm::vec4 value) const
 	glUniform4fv(glGetUniformLocation(m_ID, name.c_str()), 1, glm::value_ptr(value));
 }
 
+void Shader::SetVec3(const std::string& name, glm::vec3 value) const
+{
+  glUniform3fv(glGetUniformLocation(m_ID, name.c_str()), 1, glm::value_ptr(value));
+};
+
+
 std::shared_ptr<Shader> ShaderManager::GetShader(const std::string &shader_name) {
 
 	std::string key = shader_name;

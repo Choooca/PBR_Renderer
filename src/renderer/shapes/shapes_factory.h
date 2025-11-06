@@ -7,7 +7,7 @@
 struct AppContext;
 class ShapeRenderer;
 
-enum SHAPES { CUBE, PLANE };
+enum SHAPES { CUBE, BLANK_CUBE, PLANE };
 
 class ShapesFactory {
 
@@ -18,8 +18,7 @@ public:
   ShapeRenderer*
   CreateShape(SHAPES shape, const std::unique_ptr<AppContext> &context,
               const glm::vec3 &position = glm::vec3(0.0f),
-              const std::string &texture_path = "debug.png",
-              const std::string &shader_name = "default");
+              const std::string &texture_path = "debug.png");
 
   std::vector<std::unique_ptr<ShapeRenderer>> shapes;
 };
