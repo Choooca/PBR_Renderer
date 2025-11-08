@@ -29,7 +29,7 @@ void Application::Run() {
 
   ShapeRenderer *cube = shape_factory->CreateShape(CUBE, m_context);
   cube->m_color = {1.0f, 0.5f, 0.31f};
-  cube->m_scale = {20.0f, 1.5f, 20.0f};
+  cube->m_scale = {1.0f, 1.0f, 1.0f};
 
   Light light = Light();
   light.m_position = {2.0F, 3.0F, 1.0F};

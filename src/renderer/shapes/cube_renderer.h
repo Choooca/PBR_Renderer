@@ -13,4 +13,8 @@ public:
 
   void Render(const Camera *cam, const Light *light) override;
 
+private:
+
+  unsigned int m_diffuse_map = 0;
+  unsigned int m_specular_map = 0;
 };
