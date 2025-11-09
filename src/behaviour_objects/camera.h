@@ -11,10 +11,10 @@ public :
 	float speed = 10.0f;
 
   glm::vec3 m_position = glm::vec3(0, 0, 0.0f);
+	glm::vec3 fwd = glm::vec3(0, 0, -1);
 
 private :
 	
-	glm::vec3 fwd = glm::vec3(0, 0, -1);
 	glm::vec3 up = glm::vec3(0, 1, 0);
 
 	float cam_sensitivity = 200.0f;

@@ -1,7 +1,9 @@
 #include "cube_renderer.h"
 #include "application.h"
 #include "glm/ext/matrix_transform.hpp"
+#include "glm/ext/quaternion_transform.hpp"
 #include "glm/fwd.hpp"
+#include "glm/trigonometric.hpp"
 #include "renderer/shader.h"
 #include "renderer/texture.h"
 #include <glad/glad.h>
@@ -88,6 +90,9 @@ void CubeRenderer::Render(const Camera *cam, const Light *light) {
 
   glBindVertexArray(m_VAO);
   glm::mat4 model_mat = glm::translate(glm::mat4(1.0f), m_position);
+  model_mat = glm::rotate(model_mat, glm::radians(m_rotation_degrees.x), glm::vec3(1.0f, 0.0f, 0.0f));
+  model_mat = glm::rotate(model_mat, glm::radians(m_rotation_degrees.y), glm::vec3(0.0f, 1.0f, 0.0f));
+  model_mat = glm::rotate(model_mat, glm::radians(m_rotation_degrees.z), glm::vec3(0.0f, 0.0f, 1.0f));
   model_mat = glm::scale(model_mat, m_scale);
 
   m_shader->setMat4("model", model_mat);

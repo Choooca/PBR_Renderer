@@ -1,4 +1,5 @@
 #pragma once
+#include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
 #include "renderer/light/light.h"
 #include <glm/glm.hpp>
@@ -28,8 +29,9 @@ public:
   void SetTexture(unsigned int texture);
 
   glm::vec3 m_color = {1.0f, 1.0f, 1.0f};
-  glm::vec3 m_position; 
-  glm::vec3 m_scale = {1.0f, 1.0f, 1.0f}; 
+  glm::vec3 m_position = {0.0f, 0.0f, 0.0f}; 
+  glm::vec3 m_scale = {1.0f, 1.0f, 1.0f};
+  glm::vec3 m_rotation_degrees = {0.0f, 0.0f, 0.0f};
 
 protected:
   std::shared_ptr<Shader> m_shader;

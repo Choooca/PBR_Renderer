@@ -2,6 +2,7 @@
 #include "application.h"
 #include "behaviour_objects/camera.h"
 #include "glad/glad.h"
+#include "glm/ext/matrix_transform.hpp"
 #include "renderer/shader.h"
 #include "renderer/shapes/shape_renderer.h"
 
@@ -53,8 +54,11 @@ void BlankCube::Render(const Camera *cam, const Light *light){
   projection_matrix =
   glm::perspective(glm::radians(90.0f), 800.0f / 600.0f, .1f, 100.0f);
 
+  glm::mat4 model_mat = glm::translate(glm::mat4(1.0f), m_position);
+  model_mat = glm::scale(model_mat, m_scale);
+
   glBindVertexArray(m_VAO);
-  m_shader->setMat4("model", glm::translate(glm::mat4(1.0f), m_position));
+  m_shader->setMat4("model", model_mat);
   m_shader->setMat4("projection", projection_matrix);
   m_shader->setMat4("view", cam->GetViewMatrix());
 
