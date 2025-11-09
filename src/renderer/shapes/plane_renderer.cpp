@@ -48,7 +48,7 @@ void PlaneRenderer::InitBuffers() {
   glBindVertexArray(0);
 }
 
-void PlaneRenderer::Render(const Camera *cam, const Light *light) {
+void PlaneRenderer::Render(const Camera *cam) {
 
   m_shader->use();
 
@@ -63,11 +63,6 @@ void PlaneRenderer::Render(const Camera *cam, const Light *light) {
   m_shader->setMat4("model", glm::translate(glm::mat4(1.0f), m_position));
   m_shader->setMat4("projection", projection_matrix);
   m_shader->setMat4("view", cam->GetViewMatrix());
-
-  m_shader->SetVec3("light_color", light->m_color);
-  m_shader->SetFloat("ambient_strength", light->m_ambient_strength);
-
-  m_shader->SetVec3("object_color", m_color);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

@@ -10,6 +10,6 @@ public:
 
 	void InitBuffers() override;
 
-  void Render(const Camera *cam, const Light *light) override;
+  void Render(const Camera *cam) override;
 
 };

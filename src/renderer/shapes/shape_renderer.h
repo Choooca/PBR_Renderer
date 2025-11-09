@@ -1,7 +1,5 @@
 #pragma once
-#include "glm/detail/qualifier.hpp"
 #include "glm/ext/vector_float3.hpp"
-#include "renderer/light/light.h"
 #include <glm/glm.hpp>
 #include <memory>
 #include <string>
@@ -22,7 +20,7 @@ public:
 
   virtual void InitBuffers() {};
 
-  virtual void Render(const Camera *cam, const Light *light) {};
+  virtual void Render(const Camera *cam) {};
 
   void SetTexture(const std::string &texture_path,
                   TextureManager *texture_manager);

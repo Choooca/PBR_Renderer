@@ -47,7 +47,7 @@ void BlankCube::InitBuffers() {
   glBindVertexArray(0);
 }
 
-void BlankCube::Render(const Camera *cam, const Light *light){
+void BlankCube::Render(const Camera *cam){
   m_shader->use();
 
   glm::mat4 projection_matrix = glm::mat4(1.0f);
@@ -62,7 +62,7 @@ void BlankCube::Render(const Camera *cam, const Light *light){
   m_shader->setMat4("projection", projection_matrix);
   m_shader->setMat4("view", cam->GetViewMatrix());
 
-  m_shader->SetVec3("color", light->m_color);
+  m_shader->SetVec3("color", m_color);
 
   glDrawArrays(GL_TRIANGLES, 0, 36); 
 

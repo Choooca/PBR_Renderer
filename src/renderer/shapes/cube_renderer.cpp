@@ -81,7 +81,7 @@ void CubeRenderer::InitBuffers() {
   glBindVertexArray(0);
 }
 
-void CubeRenderer::Render(const Camera *cam, const Light *light) {
+void CubeRenderer::Render(const Camera *cam) {
   m_shader->use();
 
   glm::mat4 projection_matrix = glm::mat4(1.0f);
